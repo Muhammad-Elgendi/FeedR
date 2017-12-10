@@ -1,0 +1,26 @@
+.root{
+    -fx-background-image:url(photo_1.jpg)
+}
+.label{
+    -fx-font-size :20 pt;
+}
+.textfield{
+    -fx-font-size :10 pt;
+}
+.button{
+    -fx-background-radius: 6;
+    -fx-font-size :20 pt;
+    -fx-text-fill: linear-gradient(#000000,#03A9F4);
+
+}
+.mm{
+       -fx-font-size :15 pt;
+
+}
+.bigadress{
+        -fx-font-size :30 pt;
+        -fx-font-color :#03A9F4 ;
+}
+.mainFxmlClass {
+    -fx-font: bold 35px "arail";
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.*?>
+
+
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" hgap="7" styleClass="mainFxmlClass"  >
+    <Label text="title:"               GridPane.columnIndex="0" GridPane.rowIndex="0" minWidth="150" alignment="CENTER" ></Label>
+    <Label text="describtion:"    GridPane.columnIndex="0" GridPane.rowIndex="1" minWidth="150" alignment="CENTER"></Label>
+    <Label text="link:"               GridPane.columnIndex="0" GridPane.rowIndex="2" minWidth="150" alignment="CENTER"></Label>
+    <Label text="bublish date:"  GridPane.columnIndex="0" GridPane.rowIndex="3" minWidth="150" alignment="CENTER"></Label>
+    <Label text="content:"         GridPane.columnIndex="0" GridPane.rowIndex="4" minWidth="150" alignment="CENTER"></Label>
+    <!-- -->
+    <Label text="..."  GridPane.columnIndex="1" GridPane.rowIndex="0" ></Label>
+    <Label text="..."  GridPane.columnIndex="1" GridPane.rowIndex="1" ></Label>
+    <Label text="..."  GridPane.columnIndex="1" GridPane.rowIndex="2" ></Label>
+    <Label text="..."  GridPane.columnIndex="1" GridPane.rowIndex="3" ></Label>
+    <Label text="..."  GridPane.columnIndex="1" GridPane.rowIndex="4" ></Label>
+    <!--  -->
+    <HBox GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="2" >
+        <JFXButton text="delete"/>
+        <JFXButton text="back"/>
+    </HBox>
+    <stylesheets>
+        <URL value=""/>
+    </stylesheets>
+</GridPane>

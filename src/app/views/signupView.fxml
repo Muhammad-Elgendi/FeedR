@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane  id="AnchorPane" prefHeight="550" prefWidth="500" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox prefHeight="400.0" prefWidth="500.0" alignment="CENTER" spacing="25" >
+        <Label styleClass="bigadress" prefHeight="30" prefWidth="200" text="SIGN UP " alignment="CENTER">
+            <padding>
+                <javafx.geometry.Insets bottom="15"   top="15" />
+            </padding>
+        </Label>
+        <HBox >
+            <Label prefHeight="25" prefWidth="150" text="User Name " alignment="BASELINE_LEFT"/>
+            <TextField fx:id="name"  prefHeight="30" prefWidth="225" />
+        </HBox>
+       
+       
+        <HBox >
+            <Label prefHeight="25" prefWidth="150" text=" Email" alignment="BASELINE_LEFT"/>
+            <TextField fx:id="email"  prefHeight="30" prefWidth="225" />
+        </HBox>
+      
+        <HBox >
+            <Label prefHeight="25" prefWidth="150" text="your Password " alignment="BASELINE_LEFT"/>
+            <PasswordField fx:id="password"  prefHeight="30" prefWidth="225" />
+        </HBox>
+        <HBox >
+            <Label prefHeight="25" prefWidth="170" text="confirm Password " alignment="BASELINE_LEFT"/>
+            <PasswordField fx:id="conpassword"  prefHeight="30" prefWidth="200" />
+        </HBox>
+        <VBox spacing="10" >
+            <padding>
+                <javafx.geometry.Insets bottom="20"   top="10" />
+            </padding>
+           
+        </VBox>
+        
+
+        <Button fx:id="signup" text="Sign up " prefHeight="25" prefWidth="200"   >
+            <padding>
+                <javafx.geometry.Insets bottom="20"   top="20" />
+            </padding>
+        </Button>
+
+    </VBox>
+</AnchorPane>
