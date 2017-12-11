@@ -80,6 +80,31 @@ public class DBController {
         }
     }
 
+    public void feed_delete(String link) {
+        try {
+            s = DBConnection.getConnection().createStatement();
+
+            s.executeUpdate("delete from feeds where link = '" + link +"'" );
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void feed_update(String link,int id) {
+        try {
+            s = DBConnection.getConnection().createStatement();
+
+            s.executeUpdate("update feeds set link=" + link  + "', addition_date =" + "UTC_DATE()" + " where id =" + id + " and link ='"+ link +"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+
+        }
+    }
+
+
 
     public void pages_insert(Page Page) {
         try {
@@ -108,17 +133,6 @@ public class DBController {
         }
     }
 
-    public void feeds_update(Feed Feed) {
-        try {
-            s = DBConnection.getConnection().createStatement();
-
-            s.executeUpdate("update Feed set id=" + Feed.getId() + ",link='" + Feed.getLink() + "', addtion_date=" + Feed.getAddtion_date() + ",  user_id=" + Feed.getUserid() + " where id=" + Feed.getId() + " ");
-        } catch (SQLException ex) {
-            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-
-        }
-    }
 
     public void pages_update(Page Page) {
         try {
@@ -204,14 +218,14 @@ public class DBController {
         try {
             s = DBConnection.getConnection().createStatement();
 
-            ResultSet resaultset = s.executeQuery("select * from feeds where user_id ="+ id);
+            ResultSet resaultset = s.executeQuery("select * from feeds where user_id = "+ id);
             resaultset.beforeFirst();
             while (resaultset.next()) {
                 Feed m = new Feed();
-                m.setId(resaultset.getInt(1));
-                m.setLink(resaultset.getString(2));
-                m.setAddtion_date(resaultset.getDate(3));
-                m.setUserid(resaultset.getInt(4));
+                m.setId(resaultset.getInt("id"));
+                m.setLink(resaultset.getString("link"));
+                m.setAddtion_date(resaultset.getDate("addition_date"));
+                m.setUserid(resaultset.getInt("user_id"));
 
                 feeds.add(m);
             }

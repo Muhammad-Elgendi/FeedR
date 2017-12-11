@@ -15,27 +15,28 @@
         <javafx.geometry.Insets bottom="10" left="15" right="10" top="15" />
     </padding>
 
-    <JFXTextField fx:id="link" labelFloat="true" prefWidth="300.0" promptText="link" maxWidth="300" />
+    <JFXTextField fx:id="link" labelFloat="true" maxWidth="300" prefWidth="300.0" promptText="link" />
 
     <HBox alignment="CENTER" spacing="15">
-        <JFXButton text="Create" onAction="#createFeed"/>
+        <JFXButton onAction="#viewFeed" text="View" />
 
-        <JFXButton text="Update" onAction="#updateFeed"/>
+        <JFXButton onAction="#createFeed" text="Create" />
 
-        <JFXButton text="Delete" onAction="#deleteFeed"/>
+        <JFXButton onAction="#deleteFeed" text="Delete" />
+
     </HBox>
 
-    <TableView fx:id="tableView">
+    <TableView fx:id="tableView" onMouseClicked="#getModel">
         <columns>
-            <TableColumn minWidth="500" maxWidth="500" text="Link" fx:id="linkColumn">
+            <TableColumn fx:id="linkColumn" maxWidth="500" minWidth="500" text="Link">
 
             </TableColumn>
-            <TableColumn minWidth="300" text="Addition date" fx:id="Addition_dateColumn">
+            <TableColumn fx:id="Addition_dateColumn" minWidth="250" text="Addition date">
 
             </TableColumn>
         </columns>
     </TableView>
-    <JFXButton id="backbtn" graphicTextGap="10.0" text="Back" onAction="#direct_To_All_Pages_View">
+    <JFXButton id="backbtn" graphicTextGap="10.0" onAction="#direct_To_All_Pages_View" text="Back">
         <graphic>
             <FontAwesomeIconView fill="black" glyphName="ARROW_CIRCLE_ALT_LEFT" size="30.0" strokeType="OUTSIDE" textAlignment="CENTER" />
         </graphic>

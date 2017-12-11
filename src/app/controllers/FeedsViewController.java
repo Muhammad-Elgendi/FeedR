@@ -7,27 +7,41 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
 
-import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
 
-public class FeedsViewController{
+import java.io.IOException;
+import java.util.ResourceBundle;
+
+
+public class FeedsViewController {
 
     public JFXButton backbtn;
     public JFXTextField link;
     public int session_id;
 
+    @FXML
     public TableView<Feed> tableView;
-
+    @FXML
     public TableColumn<Feed,String> linkColumn;
-
-    public TableColumn<Feed,String> Addition_dateColumn;
+    @FXML
+    public TableColumn<Feed,Date> Addition_dateColumn;
+    @FXML
+    private void initialize(){
+        linkColumn.setCellValueFactory(new PropertyValueFactory<>("link"));
+        Addition_dateColumn.setCellValueFactory(new PropertyValueFactory<>("addtion_date"));
+        viewFeed();
+    }
 
     public void setSession_id(int id) {
         this.session_id = id;
@@ -41,40 +55,37 @@ public class FeedsViewController{
                 feed.setLink(link.getText());
                 feed.setUserid(session_id);
                 controller.feed_insert(feed);
-
+                viewFeed();
                 Notifications.create().text("Your feed has been successfully added").darkStyle().showConfirm();
             }
         }
     }
 
-    public void updateFeed(ActionEvent actionEvent) {
-        try {
+    public void viewFeed(){
 
-            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../views/allPagesView.fxml"));
-            currentStage.setScene(new Scene(root, 800, 600));
+        DBController controller = new DBController();
+        tableView.setItems(controller.feeds_getAllDB(session_id));
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    }
+
+    public void getModel(){
+
+        Feed feed = tableView.getSelectionModel().getSelectedItem();
+        DBController controller = new DBController();
+        link.setText(feed.getLink());
+
     }
 
     public void deleteFeed(ActionEvent actionEvent) {
-        try {
-
-            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../views/allPagesView.fxml"));
-            currentStage.setScene(new Scene(root, 800, 600));
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        DBController controller = new DBController();
+        controller.feed_delete(link.getText());
+        viewFeed();
+        Notifications.create().text("Your feed has been successfully deleted").darkStyle().showConfirm();
     }
 
 
     public void direct_To_All_Pages_View(ActionEvent actionEvent) {
         try {
-
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("../views/allPagesView.fxml"));
             currentStage.setScene(new Scene(root, 800, 600));
@@ -82,11 +93,5 @@ public class FeedsViewController{
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }
-
-    @FXML
-    public void initialize(){
-        DBController controller = new DBController();
-        tableView.setItems(controller.feeds_getAllDB(session_id));
     }
 }
