@@ -87,9 +87,11 @@ public class FeedsViewController {
     public void direct_To_All_Pages_View(ActionEvent actionEvent) {
         try {
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../views/allPagesView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/allPagesView.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            AllPagesViewController controller = fxmlLoader.<AllPagesViewController>getController();
+            controller.setSession_id(this.session_id);
             currentStage.setScene(new Scene(root, 800, 600));
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }

@@ -1,53 +1,56 @@
 package app.controllers;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-
 import app.models.Page;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
+
+import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 
 public class ParserController {
 
-    public static void parseAndUpdate(String feedUrl){
+    public static void parseAndUpdate(String feedUrl) {
         try {
-            URL url=new URL(feedUrl);
-            HttpURLConnection connection =(HttpURLConnection) url.openConnection();
+            URL url = new URL(feedUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             SyndFeed feed = new SyndFeedInput().build(new XmlReader(connection));
             List entities = feed.getEntries();
             Iterator iterator = entities.iterator();
+            DBController controller = new DBController();
             while (iterator.hasNext()) {
                 SyndEntry entity = (SyndEntry) iterator.next();
-                Page page =new Page();
-                DBController controller =new DBController();
-                page.setTitle(entity.getTitle());
-                page.setDescription(entity.getDescription().toString());
-                page.setLink(entity.getLink());
+                Page page = new Page();
+                page.setTitle((entity.getTitle().toString()));
+//                page.setDescription(entity.getDescription().toString());
+                page.setLink(entity.getLink().toString());
                 page.setPublish_date(new java.sql.Date(entity.getPublishedDate().getTime()));
+                System.out.println(page.getPublish_date());
                 page.setIs_read(0);
                 page.setIs_favourite(0);
-                page.setContent(entity.getContents().toString());
+//                page.setContent(entity.getContents().toString());
+                page.setFeed_id(controller.find_feed_id(feedUrl));
+                controller.page_insert(page);
             }
 
         } catch (MalformedURLException ex) {
-
+            ex.printStackTrace();
         } catch (IOException ex) {
-
+            ex.printStackTrace();
         } catch (IllegalArgumentException ex) {
-
+            ex.printStackTrace();
         } catch (FeedException ex) {
-
+            ex.printStackTrace();
         }
     }
 
-    public static boolean validate_feed(String feedUrl){
+    public static boolean validate_feed(String feedUrl) {
         return true;
 //        try {
 //            URL url = new URL(feedUrl);

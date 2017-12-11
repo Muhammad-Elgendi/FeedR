@@ -28,8 +28,8 @@ public class LoginController {
             User user = new User();
             user.setUsername(username.getText());
             user.setPassword(password.getText());
-            sessionId = controller.find_user_id(user);
             if (controller.user_is_exist(user)) {
+                sessionId = controller.find_user_id(user);
                 Notifications.create().text("You have been successfully logged-in").darkStyle().showConfirm();
                 direct_To_All_Pages_View(sessionId);
             } else {

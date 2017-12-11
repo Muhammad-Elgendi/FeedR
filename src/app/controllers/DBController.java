@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -108,9 +109,9 @@ public class DBController {
         try {
             s = DBConnection.getConnection().createStatement();
 
-            s.executeUpdate("insert into page (title,description,link,publish_date,is_read,is_favourite,content,feed_id) values ("
-                    + Page.getTitle() + "','" + Page.getDescription() + "','" + Page.getLink() + "'," + Page.getPublish_date() + ",'"
-                    + Page.getIs_read() + "','" + Page.getIs_favourite() + "','" + Page.getContent() + "'," + Page.getFeed_id() + "   )");
+            s.executeUpdate("insert into pages (title,description,link,publish_date,is_read,is_favourite,content,feed_id) values ('"
+                    + Page.getTitle() + "','" + Page.getDescription() + "','" + Page.getLink() + "'," + Page.getPublish_date() + ","
+                    + Page.getIs_read() + "," + Page.getIs_favourite() + ",'" + Page.getContent() + "'," + Page.getFeed_id() + ")");
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
@@ -239,6 +240,25 @@ public class DBController {
         }
         return Users;
     }
+
+    public ArrayList<String> feeds_getAll(int id) {
+        ArrayList<String> feeds = new ArrayList<String>();
+        try {
+            s = DBConnection.getConnection().createStatement();
+
+            ResultSet resaultset = s.executeQuery("select * from feeds where user_id = " + id);
+            resaultset.beforeFirst();
+            while (resaultset.next()) {
+                feeds.add(resaultset.getString("link"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return feeds;
+    }
+
 
 
     public ObservableList<Feed> feeds_getAllDB(int id) {
