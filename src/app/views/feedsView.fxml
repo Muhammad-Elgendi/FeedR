@@ -6,7 +6,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -28,10 +27,10 @@
 
     <TableView fx:id="tableView">
         <columns>
-            <TableColumn minWidth="100" text="Link" fx:id="linkColumn">
+            <TableColumn minWidth="500" maxWidth="500" text="Link" fx:id="linkColumn">
 
             </TableColumn>
-            <TableColumn minWidth="100" text="Addition date" fx:id="Addition_dateColumn">
+            <TableColumn minWidth="300" text="Addition date" fx:id="Addition_dateColumn">
 
             </TableColumn>
         </columns>

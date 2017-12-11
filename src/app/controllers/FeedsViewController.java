@@ -87,7 +87,6 @@ public class FeedsViewController{
     @FXML
     public void initialize(){
         DBController controller = new DBController();
-        ObservableList<Feed> feedList= controller.feeds_getAllDB(session_id);
-        tableView.setItems(feedList);
+        tableView.setItems(controller.feeds_getAllDB(session_id));
     }
 }
