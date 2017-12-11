@@ -31,9 +31,9 @@ public class ParserController {
                 page.setDescription(entity.getDescription().toString());
                 page.setLink(entity.getLink());
                 page.setPublish_date(new java.sql.Date(entity.getPublishedDate().getTime()));
-                System.out.println("Publish Date : " + entity.getPublishedDate());
-                System.out.println("Link : " + entity.getLink());
-                System.out.println("");
+                page.setIs_read(0);
+                page.setIs_favourite(0);
+                page.setContent(entity.getContents().toString());
             }
 
         } catch (MalformedURLException ex) {

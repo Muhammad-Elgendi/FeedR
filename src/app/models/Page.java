@@ -16,8 +16,8 @@ public class Page {
     String description;
     String link;
     java.sql.Date publish_date;
-    boolean is_read;
-    boolean is_favourite;
+    int is_read;
+    int is_favourite;
     String content;
     int feed_id;
 
@@ -61,19 +61,19 @@ public class Page {
         this.publish_date = publish_date;
     }
 
-    public boolean getIs_read() {
+    public int getIs_read() {
         return is_read;
     }
 
-    public void setIs_read(boolean is_read) {
+    public void setIs_read(int is_read) {
         this.is_read = is_read;
     }
 
-    public boolean getIs_favourite() {
+    public int getIs_favourite() {
         return is_favourite;
     }
 
-    public void setIs_favourite(boolean is_favourite) {
+    public void setIs_favourite(int is_favourite) {
         this.is_favourite = is_favourite;
     }
 

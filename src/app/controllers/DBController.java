@@ -118,6 +118,24 @@ public class DBController {
         }
     }
 
+    public int find_feed_id(String feedUrl) {
+        try {
+            s = DBConnection.getConnection().createStatement();
+
+            ResultSet resaultset = s.executeQuery("select * from feeds where link like '%" + feedUrl + "%'");
+            resaultset.beforeFirst();
+            while (resaultset.next()) {
+                return resaultset.getInt("id");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return 0;
+    }
+
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void users_update(User User) {
@@ -249,35 +267,35 @@ public class DBController {
     }
 
 
-    public ObservableList<Page> pages_getAllDB() {
-        ObservableList<Page> users = FXCollections.observableArrayList();
-
-        try {
-            s = DBConnection.getConnection().createStatement();
-
-            ResultSet resaultset = s.executeQuery("select * from Page");
-            resaultset.beforeFirst();
-            while (resaultset.next()) {
-                Page m = new Page();
-                m.setId(resaultset.getInt(1));
-                m.setTitle(resaultset.getString(2));
-                m.setDescription(resaultset.getString(3));
-                m.setLink(resaultset.getString(4));
-                m.setPublish_date(resaultset.getInt(5));
-                m.setIs_read(resaultset.getBoolean(6));
-                m.setIs_favourite(resaultset.getBoolean(7));
-                m.setContent(resaultset.getString(8));
-                m.setFeed_id(resaultset.getInt(9));
-
-                users.add(m);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-
-        }
-        return users;
-    }
+//    public ObservableList<Page> pages_getAllDB() {
+//        ObservableList<Page> users = FXCollections.observableArrayList();
+//
+//        try {
+//            s = DBConnection.getConnection().createStatement();
+//
+//            ResultSet resaultset = s.executeQuery("select * from Page");
+//            resaultset.beforeFirst();
+//            while (resaultset.next()) {
+//                Page m = new Page();
+//                m.setId(resaultset.getInt(1));
+//                m.setTitle(resaultset.getString(2));
+//                m.setDescription(resaultset.getString(3));
+//                m.setLink(resaultset.getString(4));
+//                m.setPublish_date(resaultset.getInt(5));
+//                m.setIs_read(resaultset.getBoolean(6));
+//                m.setIs_favourite(resaultset.getBoolean(7));
+//                m.setContent(resaultset.getString(8));
+//                m.setFeed_id(resaultset.getInt(9));
+//
+//                users.add(m);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//
+//        }
+//        return users;
+//    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public ObservableList<User> users_search(int id) {
@@ -331,35 +349,35 @@ public class DBController {
 //    }
 
 
-    public ObservableList<Page> pages_search(int id) {
-        ObservableList<Page> users = FXCollections.observableArrayList();
-
-        try {
-            s = DBConnection.getConnection().createStatement();
-
-            ResultSet resaultset = s.executeQuery("select * from Page where id like %" + id + "%");
-            resaultset.beforeFirst();
-            while (resaultset.next()) {
-                Page m = new Page();
-                m.setId(resaultset.getInt(1));
-                m.setTitle(resaultset.getString(2));
-                m.setDescription(resaultset.getString(3));
-                m.setLink(resaultset.getString(4));
-                m.setPublish_date(resaultset.getInt(5));
-                m.setIs_read(resaultset.getBoolean(6));
-                m.setIs_favourite(resaultset.getBoolean(7));
-                m.setContent(resaultset.getString(8));
-                m.setFeed_id(resaultset.getInt(9));
-
-                users.add(m);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-
-        }
-        return users;
-    }
+//    public ObservableList<Page> pages_search(int id) {
+//        ObservableList<Page> users = FXCollections.observableArrayList();
+//
+//        try {
+//            s = DBConnection.getConnection().createStatement();
+//
+//            ResultSet resaultset = s.executeQuery("select * from Page where id like %" + id + "%");
+//            resaultset.beforeFirst();
+//            while (resaultset.next()) {
+//                Page m = new Page();
+//                m.setId(resaultset.getInt(1));
+//                m.setTitle(resaultset.getString(2));
+//                m.setDescription(resaultset.getString(3));
+//                m.setLink(resaultset.getString(4));
+//                m.setPublish_date(resaultset.getInt(5));
+//                m.setIs_read(resaultset.getBoolean(6));
+//                m.setIs_favourite(resaultset.getBoolean(7));
+//                m.setContent(resaultset.getString(8));
+//                m.setFeed_id(resaultset.getInt(9));
+//
+//                users.add(m);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//
+//        }
+//        return users;
+//    }
 
 
 }
