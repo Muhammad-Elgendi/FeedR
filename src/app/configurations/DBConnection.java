@@ -13,7 +13,7 @@ public class DBConnection {
     static final String PASS = "root";
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException{
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName(JDBC_DRIVER);
         return DriverManager.getConnection(DB_URL,USER,PASS);
     }
 }

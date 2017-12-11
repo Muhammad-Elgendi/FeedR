@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<VBox id="Vbox" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121"
+      fx:controller="app.controllers.AllPagesViewController">
+    <padding>
+        <javafx.geometry.Insets bottom="10" left="10" right="10" top="15"/>
+    </padding>
+    <children>
+        <HBox alignment="CENTER">
+            <JFXTextField labelFloat="true" promptText="new Feed"/>
+            <JFXButton fx:id="searchbtn" alignment="center" graphicTextGap="10.0" onAction="#viewToEdit"
+                       styleClass="searchbtn" text="" textAlignment="CENTER">
+                <graphic>
+                    <FontAwesomeIconView fill="black" glyphName="SEARCH" size="30.0" strokeType="OUTSIDE"
+                                         textAlignment="CENTER"/>
+                </graphic>
+            </JFXButton>
+        </HBox>
+        <HBox alignment="CENTER">
+            <JFXButton text="add"/>
+            <JFXButton text="update"/>
+            <JFXButton text="delete"/>
+        </HBox>
+        <VBox>
+            <HBox alignment="CENTER_RIGHT">
+                <JFXButton text="Clear All"/>
+            </HBox>
+            <TableView>
+                <columns>
+                    <TableColumn text="id">
+
+                    </TableColumn>
+                    <TableColumn text="title">
+
+                    </TableColumn>
+                    <TableColumn minWidth="150" text="describtion">
+
+                    </TableColumn>
+                    <TableColumn text="date">
+
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
+    </children>
+</VBox>

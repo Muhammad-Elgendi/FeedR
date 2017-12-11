@@ -1,29 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
+<BorderPane id="pane" prefHeight="550" prefWidth="500" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.LoginController">
 
-<AnchorPane  xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" prefHeight="300.0" prefWidth="500.0" >
-    <VBox prefHeight="400.0" prefWidth="500.0" alignment="CENTER" spacing="25" >
-        <Label styleClass="bigadress" prefHeight="30" prefWidth="200" text="Login  " alignment="CENTER">
-            <padding>
-                <javafx.geometry.Insets bottom="15"   top="15" />
-            </padding>
-        </Label>
-        <HBox >
-            <Label prefHeight="25" prefWidth="150" text="UserName " alignment="BASELINE_LEFT"/>
-            <TextField fx:id="username"  prefHeight="30" prefWidth="225" />
-        </HBox>
-        <HBox >
-            <Label prefHeight="25" prefWidth="150" text="Password " alignment="BASELINE_LEFT"/>
-            <PasswordField fx:id="password"  prefHeight="30" prefWidth="225" />
-        </HBox>
-        <Button  id="loginbutton" text="Login " prefHeight="30" prefWidth="150" />
-        <Label styleClass="mm"  prefHeight="30" prefWidth="150" text="for Registering !!" alignment="BASELINE_LEFT"  />
-        <Button  id="signupbutton" text="Sign up " prefHeight="30" prefWidth="200" />
+    <center>
+        <VBox alignment="CENTER" spacing="15">
+            <Label alignment="CENTER" prefHeight="30" prefWidth="200" styleClass="bigadress"
+                   text="Login to your profile"/>
 
-    </VBox>
-</AnchorPane>
+            <GridPane alignment="CENTER" vgap="15" >
+                <Label alignment="BASELINE_LEFT" contentDisplay="CENTER" prefHeight="25" prefWidth="150"
+                       text="User Name :" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+                <JFXTextField fx:id="username" alignment="CENTER" prefHeight="30" prefWidth="225"
+                              GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label alignment="BASELINE_LEFT" prefHeight="25" prefWidth="150" text="Your Password :"
+                       GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+                <JFXPasswordField fx:id="password" alignment="CENTER" prefHeight="30" prefWidth="225"
+                                  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            </GridPane>
+
+            <JFXButton fx:id="login" alignment="CENTER" contentDisplay="CENTER" prefHeight="25" prefWidth="200"
+                       ripplerFill="#355582" text="Login" textAlignment="CENTER" onAction="#login">
+                <padding>
+                    <javafx.geometry.Insets bottom="15" top="15"/>
+                </padding>
+            </JFXButton>
+
+            <GridPane alignment="CENTER" hgap="10">
+                <Label alignment="CENTER" prefHeight="30" prefWidth="200" styleClass="bigadress"
+                       text="Not Registered ?!" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+                <JFXButton fx:id="signup" alignment="CENTER" contentDisplay="CENTER" prefHeight="25" prefWidth="200"
+                           ripplerFill="#355582" text="Sign Up" textAlignment="CENTER" onAction="#directToSignup"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <padding>
+                        <javafx.geometry.Insets bottom="15" top="15"/>
+                    </padding>
+                </JFXButton>
+            </GridPane>
+
+
+        </VBox>
+    </center>
+
+</BorderPane>

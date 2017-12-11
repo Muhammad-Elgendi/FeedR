@@ -9,7 +9,7 @@ package app.models;
  *
  * @author Butcher
  */
-public class page {
+public class Page {
     
     int id;
     String title;

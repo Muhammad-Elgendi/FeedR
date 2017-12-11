@@ -9,7 +9,7 @@ package app.models;
  *
  * @author Butcher
  */
-public class feed {
+public class Feed {
     
     int id;
     String link;

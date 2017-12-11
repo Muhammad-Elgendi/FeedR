@@ -13,7 +13,7 @@ public class ViewController extends Application {
     @Override public void start(Stage stage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("singlePageView.fxml"));
-        Parent root2 = FXMLLoader.load(getClass().getResource("allPageView.fxml"));
+        Parent root2 = FXMLLoader.load(getClass().getResource("allPagesView.fxml"));
         Parent root3 = FXMLLoader.load(getClass().getResource("feedView.fxml"));
         //.
         VBox box = new VBox(root3);

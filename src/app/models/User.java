@@ -2,7 +2,7 @@
 package app.models;
 
 
-public class user {
+public class User {
     
     int id;
     String username;
