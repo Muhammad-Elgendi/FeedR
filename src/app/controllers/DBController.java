@@ -6,6 +6,7 @@ import app.models.Page;
 import app.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,10 +37,10 @@ public class DBController {
         try {
             s = DBConnection.getConnection().createStatement();
 
-            ResultSet resaultset = s.executeQuery("select * from users where user_name like '%" + User.getUsername() + "%' and password like '%"+ User.getPassword() +"%'");
+            ResultSet resaultset = s.executeQuery("select * from users where user_name like '%" + User.getUsername() + "%' and password like '%" + User.getPassword() + "%'");
             resaultset.beforeFirst();
             while (resaultset.next()) {
-              return true;
+                return true;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -49,17 +50,33 @@ public class DBController {
         return false;
     }
 
-
-
-    public void feeds_insert(Feed Feed) {
+    public int find_user_id(User User) {
         try {
             s = DBConnection.getConnection().createStatement();
 
-            s.executeUpdate("insert into Feed (id,link,addition_date,user_id) values (" + Feed.getId() + ",'" + Feed.getLink() + "'," + Feed.getAddtion_date() + "," + Feed.getUserid() + ")");
+            ResultSet resaultset = s.executeQuery("select * from users where user_name like '%" + User.getUsername() + "%' and password like '%" + User.getPassword() + "%'");
+            resaultset.beforeFirst();
+            while (resaultset.next()) {
+                return resaultset.getInt("id");
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return 0;
+    }
 
+
+    public void feed_insert(Feed Feed) {
+        try {
+            s = DBConnection.getConnection().createStatement();
+
+            s.executeUpdate("insert into feeds (link,addition_date,user_id) values ('" + Feed.getLink() + "', UTC_DATE() ," + Feed.getUserid() + ")");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -181,29 +198,29 @@ public class DBController {
     }
 
 
-    public ObservableList<Feed> feeds_getAllDB() {
-        ObservableList<Feed> users = FXCollections.observableArrayList();
+    public ObservableList<Feed> feeds_getAllDB(int id) {
+        ObservableList<Feed> feeds = FXCollections.observableArrayList();
 
         try {
             s = DBConnection.getConnection().createStatement();
 
-            ResultSet resaultset = s.executeQuery("select * from Feed");
+            ResultSet resaultset = s.executeQuery("select * from feeds where user_id ="+ id);
             resaultset.beforeFirst();
             while (resaultset.next()) {
                 Feed m = new Feed();
                 m.setId(resaultset.getInt(1));
                 m.setLink(resaultset.getString(2));
-                m.setAddtion_date(resaultset.getInt(3));
+                m.setAddtion_date(resaultset.getDate(3));
                 m.setUserid(resaultset.getInt(4));
 
-                users.add(m);
+                feeds.add(m);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
-
+            ex.printStackTrace();
         }
-        return users;
+        return feeds;
     }
 
 
@@ -263,30 +280,30 @@ public class DBController {
     }
 
 
-    public ObservableList<Feed> feeds_search(int id) {
-        ObservableList<Feed> users = FXCollections.observableArrayList();
-
-        try {
-            s = DBConnection.getConnection().createStatement();
-
-            ResultSet resaultset = s.executeQuery("select * from Feed where id like %" + id + "%");
-            resaultset.beforeFirst();
-            while (resaultset.next()) {
-                Feed m = new Feed();
-                m.setId(resaultset.getInt(1));
-                m.setLink(resaultset.getString(2));
-                m.setAddtion_date(resaultset.getInt(3));
-                m.setUserid(resaultset.getInt(4));
-
-                users.add(m);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-
-        }
-        return users;
-    }
+//    public ObservableList<Feed> feeds_search(int id) {
+//        ObservableList<Feed> users = FXCollections.observableArrayList();
+//
+//        try {
+//            s = DBConnection.getConnection().createStatement();
+//
+//            ResultSet resaultset = s.executeQuery("select * from Feed where id like %" + id + "%");
+//            resaultset.beforeFirst();
+//            while (resaultset.next()) {
+//                Feed m = new Feed();
+//                m.setId(resaultset.getInt(1));
+//                m.setLink(resaultset.getString(2));
+//                m.setAddtion_date(resaultset.getInt(3));
+//                m.setUserid(resaultset.getInt(4));
+//
+//                users.add(m);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//
+//        }
+//        return users;
+//    }
 
 
     public ObservableList<Page> pages_search(int id) {

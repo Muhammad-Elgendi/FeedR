@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package app.models;
 
 /**
@@ -13,7 +8,7 @@ public class Feed {
     
     int id;
     String link;
-    int addtion_date;
+    java.sql.Date addtion_date;
     int userid;
 
     public int getId() {
@@ -32,11 +27,11 @@ public class Feed {
         this.link = link;
     }
 
-    public int getAddtion_date() {
+    public java.sql.Date getAddtion_date() {
         return addtion_date;
     }
 
-    public void setAddtion_date(int addtion_date) {
+    public void setAddtion_date(java.sql.Date addtion_date) {
         this.addtion_date = addtion_date;
     }
 

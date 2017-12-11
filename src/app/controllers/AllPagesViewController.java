@@ -13,6 +13,12 @@ import java.io.IOException;
 public class AllPagesViewController {
 
     public JFXButton addFeedBtn;
+    public int session_id;
+
+    public void setSession_id(int id){
+        this.session_id=id;
+    }
+
     public void viewToEdit(ActionEvent actionEvent){
 
     }
@@ -21,9 +27,11 @@ public class AllPagesViewController {
         try {
 
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../views/feedsView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/feedsView.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            FeedsViewController controller = fxmlLoader.<FeedsViewController>getController();
+            controller.setSession_id(this.session_id);
             currentStage.setScene(new Scene(root, 800, 600));
-
 
         } catch (IOException ex) {
             ex.printStackTrace();

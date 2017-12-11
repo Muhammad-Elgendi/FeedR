@@ -13,12 +13,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ParserController {
-    public static void main(String[] args) {
-        String url = "https://stackoverflow.com/feeds/tag?tagnames=rome";
-        new ParserController(url);
-    }
+
+    public String feedURL;
 
     public ParserController(String feedUrl) {
+        this.feedURL=feedUrl;
+    }
+
+    public void parse(String feedUrl){
         try {
             URL url=new URL(feedUrl);
             HttpURLConnection connection =(HttpURLConnection) url.openConnection();
@@ -44,5 +46,26 @@ public class ParserController {
         } catch (FeedException ex) {
 
         }
+    }
+
+    public static boolean validate_feed(String feedUrl){
+        return true;
+//        try {
+//            URL url = new URL(feedUrl);
+//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//            SyndFeed feed = new SyndFeedInput().build(new XmlReader(connection));
+//
+//            return true;
+//        }
+//        catch (FeedException ex){
+//            ex.printStackTrace();
+//        }
+//        catch (MalformedURLException ex){
+//            ex.printStackTrace();
+//        }
+//        catch (IOException ex){
+//            ex.printStackTrace();
+//        }
+//        return false;
     }
 }

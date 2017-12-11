@@ -19,6 +19,8 @@ public class LoginController {
     public JFXTextField username;
     public JFXPasswordField password;
     public JFXButton login;
+    public int sessionId;
+
 
     public void login(ActionEvent actionEvent) {
         if (!username.getText().equals("") && !password.getText().equals("")) {
@@ -26,9 +28,10 @@ public class LoginController {
             User user = new User();
             user.setUsername(username.getText());
             user.setPassword(password.getText());
+            sessionId = controller.find_user_id(user);
             if (controller.user_is_exist(user)) {
                 Notifications.create().text("You have been successfully logged-in").darkStyle().showConfirm();
-                direct_To_All_Pages_View();
+                direct_To_All_Pages_View(sessionId);
             } else {
                 Notifications.create().text("Incorrect Username / Password").darkStyle().showWarning();
             }
@@ -36,7 +39,6 @@ public class LoginController {
 
         }
     }
-
 
     public void directToSignup(ActionEvent actionEvent) {
         try {
@@ -52,15 +54,18 @@ public class LoginController {
         }
     }
 
-    public void direct_To_All_Pages_View() {
+    public void direct_To_All_Pages_View(int sessionId) {
         try {
 
             Stage currentStage = (Stage) login.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../views/allPagesView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/allPagesView.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            AllPagesViewController controller = fxmlLoader.<AllPagesViewController>getController();
+            controller.setSession_id(sessionId);
             currentStage.setScene(new Scene(root, 800, 600));
 
 
-       } catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }

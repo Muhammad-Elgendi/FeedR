@@ -16,20 +16,22 @@
         <javafx.geometry.Insets bottom="10" left="15" right="10" top="15" />
     </padding>
 
-    <JFXTextField labelFloat="true" prefWidth="300.0" promptText="link" maxWidth="300" />
+    <JFXTextField fx:id="link" labelFloat="true" prefWidth="300.0" promptText="link" maxWidth="300" />
 
     <HBox alignment="CENTER" spacing="15">
-        <JFXButton text="Update"/>
-        <JFXButton text="Create"/>
-        <JFXButton text="Delete"/>
+        <JFXButton text="Create" onAction="#createFeed"/>
+
+        <JFXButton text="Update" onAction="#updateFeed"/>
+
+        <JFXButton text="Delete" onAction="#deleteFeed"/>
     </HBox>
 
-    <TableView>
+    <TableView fx:id="tableView">
         <columns>
-            <TableColumn minWidth="100" text="link">
+            <TableColumn minWidth="100" text="Link" fx:id="linkColumn">
 
             </TableColumn>
-            <TableColumn minWidth="100" text="add date">
+            <TableColumn minWidth="100" text="Addition date" fx:id="Addition_dateColumn">
 
             </TableColumn>
         </columns>
