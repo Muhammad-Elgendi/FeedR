@@ -104,8 +104,6 @@ public class DBController {
         }
     }
 
-
-
     public void pages_insert(Page Page) {
         try {
             s = DBConnection.getConnection().createStatement();
