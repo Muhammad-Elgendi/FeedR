@@ -1,53 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<VBox id="Vbox" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121"
-      fx:controller="app.controllers.AllPagesViewController">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox id="Vbox" spacing="5" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.AllPagesViewController">
     <padding>
-        <javafx.geometry.Insets bottom="10" left="10" right="10" top="15"/>
+        <javafx.geometry.Insets bottom="15" left="15" right="15" top="15" />
     </padding>
-    <children>
-        <HBox alignment="CENTER">
-            <JFXTextField labelFloat="true" promptText="new Feed"/>
-            <JFXButton fx:id="searchbtn" alignment="center" graphicTextGap="10.0" onAction="#viewToEdit"
-                       styleClass="searchbtn" text="" textAlignment="CENTER">
-                <graphic>
-                    <FontAwesomeIconView fill="black" glyphName="SEARCH" size="30.0" strokeType="OUTSIDE"
-                                         textAlignment="CENTER"/>
-                </graphic>
-            </JFXButton>
-        </HBox>
-        <HBox alignment="CENTER">
-            <JFXButton text="add"/>
-            <JFXButton text="update"/>
-            <JFXButton text="delete"/>
-        </HBox>
-        <VBox>
-            <HBox alignment="CENTER_RIGHT">
-                <JFXButton text="Clear All"/>
-            </HBox>
-            <TableView>
-                <columns>
-                    <TableColumn text="id">
 
-                    </TableColumn>
-                    <TableColumn text="title">
+    <HBox alignment="CENTER" spacing="10">
+        <Label text="New Feed ?" />
+        <JFXButton id="addFeedBtn" graphicTextGap="5.0" text="Add Feed" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" onAction="#direct_To_feeds_view">
+            <graphic>
+                <FontAwesomeIconView fill="black" glyphName="PLUS_CIRCLE" size="30.0" strokeType="OUTSIDE" textAlignment="CENTER" />
+            </graphic>
+        </JFXButton>
+    </HBox>
 
-                    </TableColumn>
-                    <TableColumn minWidth="150" text="describtion">
+    <HBox alignment="CENTER" spacing="10">
+        <JFXTextField labelFloat="true" promptText="Search here" />
+        <JFXButton fx:id="searchbtn" alignment="center" graphicTextGap="10.0" onAction="#viewToEdit" styleClass="searchbtn" text="" textAlignment="CENTER">
+            <graphic>
+                <FontAwesomeIconView fill="black" glyphName="SEARCH" size="30.0" strokeType="OUTSIDE" textAlignment="CENTER" />
+            </graphic>
+        </JFXButton>
+    </HBox>
 
-                    </TableColumn>
-                    <TableColumn text="date">
+    <HBox alignment="CENTER">
+        <JFXButton text="Update" />
+        <JFXButton text="Delete Read Pages" />
+        <JFXButton text="Clear All" />
+    </HBox>
+    <VBox>
 
-                    </TableColumn>
-                </columns>
-            </TableView>
-        </VBox>
-    </children>
+        <TableView>
+            <columns>
+                <TableColumn text="Id">
+
+                </TableColumn>
+                <TableColumn text="Title">
+
+                </TableColumn>
+                <TableColumn minWidth="150" text="Description">
+
+                </TableColumn>
+                <TableColumn text="Date">
+
+                </TableColumn>
+            </columns>
+        </TableView>
+    </VBox>
+
 </VBox>

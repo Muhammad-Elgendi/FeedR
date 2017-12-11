@@ -10,20 +10,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AllPagesViewController {
+public class FeedsViewController {
 
-    public JFXButton addFeedBtn;
-    public void viewToEdit(ActionEvent actionEvent){
+    public JFXButton backbtn;
 
-    }
-
-    public void direct_To_feeds_view(ActionEvent actionEvent){
+    public void direct_To_All_Pages_View(ActionEvent actionEvent) {
         try {
 
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../views/feedsView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../views/allPagesView.fxml"));
             currentStage.setScene(new Scene(root, 800, 600));
-
 
         } catch (IOException ex) {
             ex.printStackTrace();

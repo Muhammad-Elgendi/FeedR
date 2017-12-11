@@ -14,7 +14,7 @@ public class ViewController extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("singlePageView.fxml"));
         Parent root2 = FXMLLoader.load(getClass().getResource("allPagesView.fxml"));
-        Parent root3 = FXMLLoader.load(getClass().getResource("feedView.fxml"));
+        Parent root3 = FXMLLoader.load(getClass().getResource("feedsView.fxml"));
         //.
         VBox box = new VBox(root3);
         //.
