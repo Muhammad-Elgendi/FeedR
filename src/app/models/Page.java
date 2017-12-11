@@ -15,7 +15,7 @@ public class Page {
     String title;
     String description;
     String link;
-    int publish_date;
+    java.sql.Date publish_date;
     boolean is_read;
     boolean is_favourite;
     String content;
@@ -53,11 +53,11 @@ public class Page {
         this.link = link;
     }
 
-    public int getPublish_date() {
+    public java.sql.Date getPublish_date() {
         return publish_date;
     }
 
-    public void setPublish_date(int publish_date) {
+    public void setPublish_date(java.sql.Date publish_date) {
         this.publish_date = publish_date;
     }
 

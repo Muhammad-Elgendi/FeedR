@@ -35,7 +35,7 @@
 
     <HBox alignment="CENTER">
         <JFXButton text="View"  />
-        <JFXButton text="Update" />
+        <JFXButton text="Update" onAction="#updatePages" />
         <JFXButton text="Delete Read Pages"  />
         <JFXButton text="Clear All" />
     </HBox>

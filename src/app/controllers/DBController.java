@@ -84,7 +84,7 @@ public class DBController {
         try {
             s = DBConnection.getConnection().createStatement();
 
-            s.executeUpdate("delete from feeds where link = '" + link +"'" );
+            s.executeUpdate("delete from feeds where link = '" + link + "'");
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
@@ -92,11 +92,11 @@ public class DBController {
         }
     }
 
-    public void feed_update(String link,int id) {
+    public void feed_update(String link, int id) {
         try {
             s = DBConnection.getConnection().createStatement();
 
-            s.executeUpdate("update feeds set link=" + link  + "', addition_date =" + "UTC_DATE()" + " where id =" + id + " and link ='"+ link +"'");
+            s.executeUpdate("update feeds set link=" + link + "', addition_date =" + "UTC_DATE()" + " where id =" + id + " and link ='" + link + "'");
         } catch (SQLException ex) {
             Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -104,16 +104,17 @@ public class DBController {
         }
     }
 
-    public void pages_insert(Page Page) {
+    public void page_insert(Page Page) {
         try {
             s = DBConnection.getConnection().createStatement();
 
-
-            s.executeUpdate("insert into Page (id,title,description,link,publish_date,is_read,is_favourite,content,feed_id) values (" + Page.getId() + ",'" + Page.getTitle() + "','" + Page.getDescription() + "','" + Page.getLink() + "'," + Page.getPublish_date() + ",'" + Page.getIs_read() + "','" + Page.getIs_favourite() + "','" + Page.getContent() + "'," + Page.getFeed_id() + "   )");
+            s.executeUpdate("insert into page (title,description,link,publish_date,is_read,is_favourite,content,feed_id) values ("
+                    + Page.getTitle() + "','" + Page.getDescription() + "','" + Page.getLink() + "'," + Page.getPublish_date() + ",'"
+                    + Page.getIs_read() + "','" + Page.getIs_favourite() + "','" + Page.getContent() + "'," + Page.getFeed_id() + "   )");
         } catch (SQLException ex) {
-            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
-
+            ex.printStackTrace();
         }
     }
 
@@ -152,9 +153,9 @@ public class DBController {
 
             s.executeUpdate("delete from User where id=" + id + "");
         } catch (SQLException ex) {
-            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
-
+            ex.printStackTrace();
         }
     }
 
@@ -181,6 +182,18 @@ public class DBController {
             Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
 
+        }
+    }
+
+    public void pages_clear_all(int id) {
+        try {
+            s = DBConnection.getConnection().createStatement();
+
+            s.executeUpdate("delete from pages");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -216,7 +229,7 @@ public class DBController {
         try {
             s = DBConnection.getConnection().createStatement();
 
-            ResultSet resaultset = s.executeQuery("select * from feeds where user_id = "+ id);
+            ResultSet resaultset = s.executeQuery("select * from feeds where user_id = " + id);
             resaultset.beforeFirst();
             while (resaultset.next()) {
                 Feed m = new Feed();

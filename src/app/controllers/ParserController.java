@@ -2,6 +2,8 @@ package app.controllers;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+
+import app.models.Page;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
@@ -14,13 +16,7 @@ import java.util.List;
 
 public class ParserController {
 
-    public String feedURL;
-
-    public ParserController(String feedUrl) {
-        this.feedURL=feedUrl;
-    }
-
-    public void parse(String feedUrl){
+    public static void parseAndUpdate(String feedUrl){
         try {
             URL url=new URL(feedUrl);
             HttpURLConnection connection =(HttpURLConnection) url.openConnection();
@@ -29,9 +25,12 @@ public class ParserController {
             Iterator iterator = entities.iterator();
             while (iterator.hasNext()) {
                 SyndEntry entity = (SyndEntry) iterator.next();
-                System.out.println("");
-                System.out.println("Title : " + entity.getTitle());
-                System.out.println("Description : " + entity.getDescription());
+                Page page =new Page();
+                DBController controller =new DBController();
+                page.setTitle(entity.getTitle());
+                page.setDescription(entity.getDescription().toString());
+                page.setLink(entity.getLink());
+                page.setPublish_date(new java.sql.Date(entity.getPublishedDate().getTime()));
                 System.out.println("Publish Date : " + entity.getPublishedDate());
                 System.out.println("Link : " + entity.getLink());
                 System.out.println("");

@@ -41,6 +41,11 @@ public class AllPagesViewController {
 
     }
 
+
+    public void updatePages(){
+
+    }
+
     public void clearAllPages(){
 
 //        DBController controller = new DBController();
@@ -54,6 +59,7 @@ public class AllPagesViewController {
 //        tableView.setItems(controller.pages_getAllDB(session_id));
 
     }
+
 
     public void setSession_id(int id){
         this.session_id=id;
