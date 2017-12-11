@@ -29,33 +29,31 @@ public class AllPagesViewController {
     public TableColumn<Feed,Date> Addition_dateColumn;
     @FXML
     private void initialize(){
-        linkColumn.setCellValueFactory(new PropertyValueFactory<>("link"));
-        Addition_dateColumn.setCellValueFactory(new PropertyValueFactory<>("addtion_date"));
-        viewPages();
+//        linkColumn.setCellValueFactory(new PropertyValueFactory<>("link"));
+//        Addition_dateColumn.setCellValueFactory(new PropertyValueFactory<>("addtion_date"));
+//        viewPages();
     }
 
     public void viewPages(){
 
-        DBController controller = new DBController();
-        tableView.setItems(controller.pages_getAllDB(session_id));
+//        DBController controller = new DBController();
+//        tableView.setItems(controller.pages_getAllDB(session_id));
 
     }
 
     public void clearAllPages(){
 
-        DBController controller = new DBController();
-        tableView.setItems(controller.pages_getAllDB(session_id));
+//        DBController controller = new DBController();
+//        tableView.setItems(controller.pages_getAllDB(session_id));
 
     }
 
     public void deleteReadPages(){
 
-        DBController controller = new DBController();
-        tableView.setItems(controller.pages_getAllDB(session_id));
+//        DBController controller = new DBController();
+//        tableView.setItems(controller.pages_getAllDB(session_id));
 
     }
-
-    public void
 
     public void setSession_id(int id){
         this.session_id=id;
