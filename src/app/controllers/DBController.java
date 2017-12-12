@@ -216,6 +216,18 @@ public class DBController {
         }
     }
 
+    public void pages_clear_read(int id) {
+        try {
+            s = DBConnection.getConnection().createStatement();
+
+            s.executeUpdate("delete from pages where is_read = 1");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public ObservableList<User> users_getAllDB() {
         ObservableList<User> Users = FXCollections.observableArrayList();
