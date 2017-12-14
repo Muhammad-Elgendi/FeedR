@@ -21,3 +21,9 @@ significant because they determine the popularity and attractiveness of software
 advertising service. Advertisers are more likely to pay for such service as the software gains more
 users. As stakeholders, users are interested in the ease of using the application services and
 privacy of personal information. Thus, we must satisfy the main interests of users as stakeholders.
+
+# How to run Feedr application
+1- Import all .Jar files into your project directory
+2- Create a mysql-database called feedr (Make sure root user with root password can access and manipule the database)
+3- Import feedr.sql to your database
+4- (Optional) you can edit DBconnection class inside configrations directory with your custom credentials
