@@ -11,42 +11,48 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class ParserController {
 
-    public static void parseAndUpdate(String feedUrl) {
+    public static void parseAndUpdate(ArrayList<String> feeds) {
         try {
-            URL url = new URL(feedUrl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            SyndFeed feed = new SyndFeedInput().build(new XmlReader(connection));
-            List entities = feed.getEntries();
-            Iterator iterator = entities.iterator();
             DBController controller = new DBController();
-            while (iterator.hasNext()) {
-                SyndEntry entity = (SyndEntry) iterator.next();
-                Page page = new Page();
-                page.setTitle((entity.getTitle().toString()));
-//                page.setDescription(entity.getDescription().toString());
-                page.setLink(entity.getLink().toString());
-                page.setPublish_date(new java.sql.Date(entity.getPublishedDate().getTime()));
-                System.out.println(page.getPublish_date());
-                page.setIs_read(0);
-                page.setIs_favourite(0);
+            for (int i = 0; i < feeds.size(); i++) {
+                String feedUrl = feeds.get(i);
+                URL url = new URL(feedUrl);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                SyndFeed feed = new SyndFeedInput().build(new XmlReader(connection));
+                List entities = feed.getEntries();
+                Iterator iterator = entities.iterator();
+                while (iterator.hasNext()) {
+                    SyndEntry entity = (SyndEntry) iterator.next();
+                    Page page = new Page();
+                    page.setTitle((entity.getTitle().toString()));
+                    page.setDescription(entity.getDescription().toString());
+//                System.out.println(page.getDescription());
+                    page.setLink(entity.getLink().toString());
+                    page.setPublish_date(new java.sql.Date(entity.getPublishedDate().getTime()));
+//                System.out.println(page.getPublish_date());
+                    page.setIs_read(0);
+                    page.setIs_favourite(0);
 //                page.setContent(entity.getContents().toString());
-                page.setFeed_id(controller.find_feed_id(feedUrl));
-                controller.page_insert(page);
+                    page.setFeed_id(controller.find_feed_id(feedUrl));
+                    controller.page_insert(page);
+                }
+
             }
 
         } catch (MalformedURLException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         } catch (IOException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         } catch (IllegalArgumentException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         } catch (FeedException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         }
     }
 

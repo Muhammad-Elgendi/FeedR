@@ -62,6 +62,7 @@ public class LoginController {
             Parent root = (Parent) fxmlLoader.load();
             AllPagesViewController controller = fxmlLoader.<AllPagesViewController>getController();
             controller.setSession_id(sessionId);
+            controller.initPages();
             currentStage.setScene(new Scene(root, 800, 600));
 
 

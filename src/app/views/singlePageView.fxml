@@ -1,33 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane id="pane" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.ViewController">
+
+    <center>
+        <VBox alignment="CENTER" spacing="15">
+
+
+            <GridPane alignment="CENTER" vgap="15">
+                <Label alignment="BASELINE_LEFT" contentDisplay="CENTER" prefHeight="25" prefWidth="150" text="Title :" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+
+                <Label fx:id="title" alignment="BASELINE_LEFT" contentDisplay="CENTER" prefHeight="64.0" prefWidth="571.0" text="" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label alignment="BASELINE_LEFT" prefHeight="25" prefWidth="150" text="Description :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+                <JFXTextArea fx:id="description" prefHeight="229.0" prefWidth="576.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" editable="false" />
+
+                <Label alignment="BASELINE_LEFT" prefHeight="25" prefWidth="150" text="Link :" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+
+                <JFXTextArea fx:id="link" prefHeight="59.0" prefWidth="596.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" editable="false"/>
+
+                <Label alignment="BASELINE_LEFT" prefHeight="25" prefWidth="150" text="Publish Date :" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+
+                <Label fx:id="publish_date" alignment="BASELINE_LEFT" prefHeight="25" prefWidth="150" text="" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
 
 
 
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" hgap="7" styleClass="mainFxmlClass"  >
-    <Label text="title:"               GridPane.columnIndex="0" GridPane.rowIndex="0" minWidth="150" alignment="CENTER" ></Label>
-    <Label text="describtion:"    GridPane.columnIndex="0" GridPane.rowIndex="1" minWidth="150" alignment="CENTER"></Label>
-    <Label text="link:"               GridPane.columnIndex="0" GridPane.rowIndex="2" minWidth="150" alignment="CENTER"></Label>
-    <Label text="bublish date:"  GridPane.columnIndex="0" GridPane.rowIndex="3" minWidth="150" alignment="CENTER"></Label>
-    <Label text="content:"         GridPane.columnIndex="0" GridPane.rowIndex="4" minWidth="150" alignment="CENTER"></Label>
-    <!-- -->
-    <Label text="..."  GridPane.columnIndex="1" GridPane.rowIndex="0" ></Label>
-    <Label text="..."  GridPane.columnIndex="1" GridPane.rowIndex="1" ></Label>
-    <Label text="..."  GridPane.columnIndex="1" GridPane.rowIndex="2" ></Label>
-    <Label text="..."  GridPane.columnIndex="1" GridPane.rowIndex="3" ></Label>
-    <Label text="..."  GridPane.columnIndex="1" GridPane.rowIndex="4" ></Label>
-    <!--  -->
-    <HBox GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="2" >
-        <JFXButton text="delete"/>
-        <JFXButton text="back"/>
-    </HBox>
-    <stylesheets>
-        <URL value=""/>
-    </stylesheets>
-</GridPane>
+            </GridPane>
+
+            <JFXButton fx:id="favourite" alignment="CENTER" contentDisplay="CENTER" onAction="#setFavourite" prefHeight="25" prefWidth="200" ripplerFill="#355582" text="" textAlignment="CENTER">
+                <padding>
+                    <javafx.geometry.Insets bottom="15" top="15" />
+                </padding>
+                <graphic>
+                    <FontAwesomeIconView fill="black" glyphName="STAR" size="30.0" strokeType="OUTSIDE" textAlignment="CENTER" />
+                </graphic>
+            </JFXButton>
+
+            <GridPane alignment="CENTER" hgap="60">
+                <JFXButton id="backbtn" graphicTextGap="10.0" onAction="#direct_To_All_Pages_View" text="Back" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <graphic>
+                        <FontAwesomeIconView fill="black" glyphName="ARROW_CIRCLE_ALT_LEFT" size="30.0" strokeType="OUTSIDE" textAlignment="CENTER" />
+                    </graphic>
+                </JFXButton>
+
+                <JFXButton id="deletebtn" graphicTextGap="10.0" onAction="#delete" text="Delete" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <graphic>
+                        <FontAwesomeIconView fill="black" glyphName="MINUS" size="30.0" strokeType="OUTSIDE" textAlignment="CENTER" />
+                    </graphic>
+                </JFXButton>
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+            </rowConstraints>
+
+
+
+            </GridPane>
+
+
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,3 +1,4 @@
+/*
 .root{
     -fx-background-image:url(photo_1.jpg)
 }
@@ -24,3 +25,39 @@
 .mainFxmlClass {
     -fx-font: bold 35px "arail";
 }
+*/
+.root{
+
+-fx-background-color: rgb(65 ,110,120);
+-fx-font: bold 30px 'arail';
+
+}
+
+.button{
+-fx-border-width: .5px ;
+-fx-border-color: white;
+-fx-border-style: solid;
+-fx-background-color: rgb( 50,200,150 );
+-fx-text-fill: white;
+}
+
+.button:hover{
+
+-fx-background-color: white;
+
+-fx-text-fill: rgb( 50,200,150 );
+
+}
+
+.label{
+
+-fx-text-fill: rgb( 50,200,150 );
+
+}
+
+.text-field{
+
+-fx-text-fill: white;
+
+}
+

@@ -63,6 +63,7 @@ public class FeedsViewController {
 
     public void viewFeed(){
 
+//        System.out.println(session_id);
         DBController controller = new DBController();
         tableView.setItems(controller.feeds_getAllDB(session_id));
 
@@ -91,6 +92,7 @@ public class FeedsViewController {
             Parent root = (Parent) fxmlLoader.load();
             AllPagesViewController controller = fxmlLoader.<AllPagesViewController>getController();
             controller.setSession_id(this.session_id);
+            controller.initPages();
             currentStage.setScene(new Scene(root, 800, 600));
         } catch (IOException ex) {
             ex.printStackTrace();
