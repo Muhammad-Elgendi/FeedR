@@ -12,9 +12,9 @@ websites in one place. It lets you check the news on the go, without hassle, per
 overwhelming functionality.
 
 System users (stakeholders)
-Feedr​ has the following stakeholder groups, arranged according to their importance
+Feedr has the following stakeholder groups, arranged according to their importance
 1. Users (most important)
-Users.​ Feedr users are the stakeholder group that receives the top prioritization. Users are
+Users: Feedr users are the stakeholder group that receives the top prioritization. Users are
 significant because they determine the popularity and attractiveness of software’s display
 advertising service. Advertisers are more likely to pay for such service as the software gains more
 users. As stakeholders, users are interested in the ease of using the application services and
